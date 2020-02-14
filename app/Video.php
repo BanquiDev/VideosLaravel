@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Video extends Model
 {
   public function comments(){
-  return $this->hasMany('App\Comment');
+  return $this->hasMany('App\Comment')->orderBy('id', 'desc');
 }
 
 public function user(){

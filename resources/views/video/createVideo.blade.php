@@ -2,8 +2,10 @@
 
 
 @section('content')
+<br>
+
 <div class="container">
-  <div class="row">
+  <div class="col">
     <h2 align-items="center">Crear un nuevo Video</h2>
     <hr>
     <form class="col-lg-7" action="{{url('/guardar-video')}}" method="post" enctype="multipart/form-data">
