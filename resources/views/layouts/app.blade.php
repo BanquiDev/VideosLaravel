@@ -26,23 +26,23 @@
             <div class="container">
               <ul class="nav navbar-nav">
                 <li>
-                  <a class="navbar-brand" href="{{ url('/home') }}">Inicio</a>
+                  <a class="navbar-brand" href="{{ url('/') }}">Inicio</a>
                 </li>
               </ul>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                       <span class="navbar-toggler-icon"></span>
                   </button>
-                	 <form class="navbar-form navbar-left" role='search' action="" method="">
+                	 <form class="navbar-form navbar-left" role='search' action="{{ url('/buscar') }}">
                      <div class="form-row">
                        <div class="form-col">
-                          <input type="text" class='form-control' placeholder="Que Quieres Ver?" name="Search" value="">
+                          <input type="text" class='form-control' placeholder="Que Quieres Ver?" name="search" value="">
+
                        </div>
                           <div class="form-col">
-                            <button type="submit" class="btn btn-default" name="button">
+                            <button type="submit" class="btn btn-default">
+
                               <i class="fas fa-search"></i>
-                                <!-- <i data-feather="search"></i> -->
-                                <!-- <script>feather.replace()</script> -->
-                              <!-- <span class="glyphicon glyphicon-search"></span> -->
+                            <!-- <span class="glyphicon glyphicon-search"></span> -->
                             </button>
                         </div>
                      </div>

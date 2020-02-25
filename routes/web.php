@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
+// Videos
 
 Route::get('/createVideo', 'VideoController@createvideo', array(
   'as' => 'createVideo',
@@ -45,6 +47,31 @@ Route::get('video-file/{filename}', array(
   'uses' => 'VideoController@getVideo'
 ));
 
+Route::get('/delete-video/{video_id}', array(
+  'as' => 'videoDelete',
+  'middleware' => 'auth',
+  'uses' => 'VideoController@delete'
+));
+
+Route::get('/editar-video/{video_id}', array(
+  'as' => 'videoEdit',
+  'middleware' => 'auth',
+  'uses' => 'VideoController@edit'
+));
+
+Route::post('/update-video/{video_id}', array(
+  'as' => 'updateVideo',
+  'middleware' => 'auth',
+  'uses' => 'VideoController@update'
+));
+
+Route::get('/buscar/{search?}/{filter?}', [
+  'as' => 'videoSearch',
+  'uses' => 'VideoController@search',
+]);
+
+// Comentarios
+
 Route::post('/comment', array(
   'as' => 'comment',
   'middleware' => 'auth',
@@ -57,8 +84,15 @@ Route::get('/delete-comment/{comment_id}', array(
   'uses' => 'CommentController@delete',
 ));
 
-Route::get('/delete-video/{video_id}', array(
-  'as' => 'videoDelete',
-  'middleware' => 'auth',
-  'uses' => 'VideoController@delete'
+// Usuarios
+
+Route::get('/canal/{user_id}', array(
+  'as' => 'channel',
+  'uses' => 'UserController@channel'
 ));
+
+ //Cache
+
+ Route::get('/clear-cache', function(){
+   $code = Artisan::call('cache:clear');
+ });
